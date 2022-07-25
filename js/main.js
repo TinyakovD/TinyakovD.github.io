@@ -18,7 +18,7 @@ window.generate = function generate() {
 
             // Render the document (Replace {first_name} by John, {last_name} by Doe, ...)
             doc.render({
-                firstname: document.getElementById('name').value,
+                firstname: document.getElementById('lastNameRu1').value,
                 last_name: "Doe",
                 phone: "0652455478",
                 description: "New Website",
