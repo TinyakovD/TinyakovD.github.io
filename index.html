@@ -5,14 +5,194 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+
+    <!-- SCRIPTS FOR TABS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <!-- SCRIPTS FOR xlsx-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" integrity="sha512-r22gChDnGvBylk90+2e/ycr3RVrDi8DIOkIGNhJlKfuyQM4tIRAI062MaV8sfjQKYVGjOBaZBOA87z+IhZE9DA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
-<form name="test" method="post" action="input1.php">
-    <p><b>Ваше имя:</b><br>
-        <input type="text" size="40" id="name">
-    </p>
-</form>
-<button onclick="generate()">Generate document</button>
+
+
+<!-- create export data-->
+
+
+
+
+    <div class="container">
+        <div class="main">
+            <div class="leftButton">
+                <input type="file" id="excel" accept=".xls,.xlsx">
+
+                <button id="find12">Find</button>
+            </div>
+
+            <div class="middleButton">
+                <div class="calc">
+                    <div class="firstDate">
+                        <input type="date" id="cDate" value="">
+                    </div>
+
+                    <div class="workDays">
+                        <input type="checkbox" id="isEndDateIncluded">
+                        <input type="number" id="totalDays" value=1>
+                        <input type="number" id="totalWorkDays">
+                    </div>
+
+                    <div class="secondDate">
+                        <input type="date" id="poDate">
+                    </div>
+
+
+
+
+                </div>
+                <div class="info">
+
+                </div>
+            </div>
+
+            <div class="rightButton">
+                <!-- GENERATE BUTTON -->
+                <button onclick="generate()">Generate document</button>
+            </div>
+        </div>
+
+        <div class="personalInfo">
+            <div class="nav">
+                <nav class='navigationTab'>
+                    <ul class="nav nav-tabs">
+                        <li class="active" id="li-tab1"><a data-toggle="tab" href="#tab1">Вкладка 1</a></li>
+                        <li><span onclick=createTab()  id="topright1">&times</span></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="tab-content">
+                <div id="tab1" class="tab-pane fade in active">
+                    <!-- № Stud -->
+                    <input type="text" size="40" id="nStud1">
+                    <button id="sFind1" type="button" onclick= findInfo(this.id)>Find</button>
+                    <br>
+                    <!-- purpose -->
+                    <select id="purpose1">
+                        <option>Учеба</option>
+                        <option>Краткосрочная учеба</option>
+                        <option>Научно-технические связи (НТС)</option>
+                        <option>Трудовая деятельность</option>
+                    </select>
+                    <br>
+                    <!--entry visa-->
+                    <select id="entryVisa1">
+                        <option>Однократная</option>
+                        <option>Двукратная</option>
+                        <option>Многократная</option>
+                    </select>
+                    <br>
+                    <!-- type of visa-->
+                    <select id="typeVisa1">
+                        <option>Учебная</option>
+                        <option>Рабочая</option>
+                        <option>Гуманитарная</option>
+                    </select>
+                    <br>
+                    <!--FIO-->
+                    <input type="text" size="40" id="lastNameRu1">
+                    <input type="text" size="40" id="lastNameEn1">
+                    <br>
+                    <input type="text" size="40" id="firstNameRu1">
+                    <input type="text" size="40" id="firstNameEn1">
+                    <br>
+                    <!-- gender -->
+                    <select id="gender1">
+                        <option>Мужской</option>
+                        <option>Женский</option>
+                    </select>
+                    <br>
+                    <!-- date of birth -->
+                    <input type="text" size="40" id="dateOfBirth1">
+                    <br>
+                    <!-- passport data -->
+                    <input type="text" size="40" id="series1">
+                    <input type="text" size="40" id="idPassport1">
+                    <input type="text" size="40" id="dateOfIssue1">
+                    <input type="text" size="40" id="validUntil1">
+                    <br>
+                    <!-- issued by -->
+                    <input type="text" size="40" id="issuedBy1">
+                    <br>
+                    <!-- state of birth -->
+                    <select id="stateBirth1">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                    <input type="text" size="40" id="placeStateBirth1">
+                    <br>
+                    <input type="text" size="40" id="otherStateBirth1">
+                    <br>
+                    <!--place to get a visa-->
+                    <select id="placeStateGetVisa1">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                    <select id="placeCityGetVisa1">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                    <br>
+                    <input type="text" size="40" id="otherStateGetVisa1">
+                    <input type="text" size="40" id="otherCityGetVisa1">
+                    <br>
+                    <!--place of residence in the home country-->
+                    <input type="text" size="40" id="homeAddress1">
+                    <br>
+                    <!--the level of education-->
+                    <select id="levelEducation1">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                    <br>
+                    <!--faculty-->
+                    <select id="faculty1">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                    <br>
+                    <!-- course -->
+                    <select id="course1">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+
+
+                        <!--remove button-->
+                    <span onclick=removeDummy(this)  id="deleteButton1">&times</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/docxtemplater/3.31.1/docxtemplater.js"></script>
 <script src="https://unpkg.com/pizzip@3.1.1/dist/pizzip.js"></script>
@@ -27,5 +207,10 @@ Mandatory in IE 6, 7, 8 and 9.
         src="https://unpkg.com/pizzip@3.1.1/dist/pizzip-utils-ie.js"
 ></script>
 <![endif]-->
-<script src="js/main.js"></script>
+
+
+<script type="text/javascript" src="js/calc.js"></script>
+<script type="text/javascript" src="js/tab.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/excel.js"></script>
 </html>
