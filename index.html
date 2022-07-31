@@ -4,7 +4,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Форма заполнения</title>
 
     <link rel="stylesheet" href="css/style.css" type="text/css">
 
@@ -28,153 +28,211 @@
     <div class="container">
         <div class="main">
             <div class="leftButton">
+
+                <span class="details">Импорт excel файла</span>
                 <input type="file" id="excel" accept=".xls,.xlsx">
 
-                <button id="find12">Find</button>
             </div>
 
             <div class="middleButton">
                 <div class="calc">
                     <div class="firstDate">
+                        <span class="details">Дата подачи документов</span>
                         <input type="date" id="cDate" value="">
                     </div>
 
                     <div class="workDays">
+                        <span class="details">включая конечную дату</span>
                         <input type="checkbox" id="isEndDateIncluded">
-                        <input type="number" id="totalDays" value=1>
-                        <input type="number" id="totalWorkDays">
+                        <br>
+                        <span class="details">количество дней</span>
+                        <input type="number" id="totalDays" >
+                        <br>
+                        <span class="details">количество РАБОЧИХ дней</span>
+                        <input type="number" id="totalWorkDays" value=20>
                     </div>
 
                     <div class="secondDate">
+                        <span class="details">Предполагаемый въезд в РФ с</span>
                         <input type="date" id="poDate">
                     </div>
 
+                    <div class="poDays">
+                        <span class="details">на срок (дней)</span>
+                        <input type="number" id="poDateDays" value=90>
+                    </div>
 
+                    <div class="thirdDate">
+                        <span class="details">Пребывание в России</span>
+                        <input type="date" id="thirdPoDate">
+                    </div>
 
 
                 </div>
                 <div class="info">
+                    <!-- citizenship -->
+                    <span class="details">Гражданство (подданство)</span>
+                    <select id="grazd">
+                        <option hidden disabled selected value=""></option>
+                        <option value="Китай">Китай</option>
+                        <option value="Вьетнам">Вьетнам</option>
+                        <option value="Туркменистан">Туркменистан</option>
+                        <option value="Монголия">Монголия</option>
+                        <option value="Тайвань (Китай)">Тайвань (Китай)</option>
+                        <option value="Другое">Другое</option>
+                    </select>
+                    <br>
+                    <span class="details">Другое</span>
+                    <input type="text" size="40" id="otherGrazd">
+                    <br>
+                    <!--academicYear-->
+                    <span class="details">Учебный год</span>
+                    <select id="academicYear">
 
+<!--                        <option hidden disabled selected value=""></option>-->
+                        <option value="2022-2023">2022-2023</option>
+                        <option value="2023-2024">2023-2024</option>
+                        <option value="2024-2025">2024-2025</option>
+                        <option value="2025-2026">2025-2026</option>
+                        <option value="2026-2027">2026-2027</option>
+                    </select>
+                    <br>
+                    <!-- purpose -->
+                    <span class="details">Цель поездки</span>
+                    <select id="purpose" required>
+                        <option value="Учеба">Учеба</option>
+                        <option value="Краткосрочная учеба">Краткосрочная учеба</option>
+                        <option value="(НТС)">Научно-технические связи (НТС)</option>
+                        <option value="Трудовая деятельность">Трудовая деятельность</option>
+                    </select>
+                    <br>
+                    <span class="details">Оформление на</span>
+                    <select id="registrationOn">
+                    <option hidden disabled selected value=""></option>
+                    <option value="Круглов">Начальник УМС  - В.В. Круглов</option>
+                    <option value="Морозова">Заместитель начальника УМС – О.А. Морозова</option>
+                    </select>
                 </div>
             </div>
 
             <div class="rightButton">
                 <!-- GENERATE BUTTON -->
-                <button onclick="generate()">Generate document</button>
+                <button onclick="generateGuarLetter()">Гарантийное письмо</button>
+                <button onclick="generateSupportLetter()">Письмо поддержки</button>
+                <button onclick="generateSolicitation()">Ходатайство</button>
+                <button onclick="generateJustification()">Письмо-обоснование</button>
+
+<!--                <button onclick="proverka()">Generate asd</button>-->
+<!--                <button onclick="generGuarLett()">Generate let</button>-->
             </div>
         </div>
+
+
 
         <div class="personalInfo">
             <div class="nav">
                 <nav class='navigationTab'>
                     <ul class="nav nav-tabs">
                         <li class="active" id="li-tab1"><a data-toggle="tab" href="#tab1">Вкладка 1</a></li>
-                        <li><span onclick=createTab()  id="topright1">&times</span></li>
+                        <li><span onclick=createTab()  id="createTabButton">&times</span></li>
                     </ul>
                 </nav>
             </div>
 
+
+
             <div class="tab-content">
                 <div id="tab1" class="tab-pane fade in active">
                     <!-- № Stud -->
-                    <input type="text" size="40" id="nStud1">
+                    <span class="details">Порядковый номер студента</span>
+                    <input type="text" size="40" id="nStud1" onchange="renameTab(this)">
                     <button id="sFind1" type="button" onclick= findInfo(this.id)>Find</button>
                     <br>
-                    <!-- purpose -->
-                    <select id="purpose1">
-                        <option>Учеба</option>
-                        <option>Краткосрочная учеба</option>
-                        <option>Научно-технические связи (НТС)</option>
-                        <option>Трудовая деятельность</option>
-                    </select>
-                    <br>
                     <!--entry visa-->
+                    <span class="details">Кратность визы</span>
                     <select id="entryVisa1">
-                        <option>Однократная</option>
-                        <option>Двукратная</option>
-                        <option>Многократная</option>
+                        <option value="Однократная">Однократная</option>
+                        <option value="Двукратная">Двукратная</option>
+                        <option value="Многократная">Многократная</option>
                     </select>
                     <br>
                     <!-- type of visa-->
-                    <select id="typeVisa1">
-                        <option>Учебная</option>
-                        <option>Рабочая</option>
-                        <option>Гуманитарная</option>
-                    </select>
+                    <span class="details">Вид визы</span>
+                    <select id="typeVisa1"></select>
                     <br>
                     <!--FIO-->
+                    <span class="details">Фамилия(РУС)</span>
                     <input type="text" size="40" id="lastNameRu1">
+                    <span class="details">Фамилия(АНГЛ)</span>
                     <input type="text" size="40" id="lastNameEn1">
                     <br>
+                    <span class="details">Имя(РУС)</span>
                     <input type="text" size="40" id="firstNameRu1">
+                    <span class="details">Имя(АНГЛ)</span>
                     <input type="text" size="40" id="firstNameEn1">
                     <br>
                     <!-- gender -->
+                    <span class="details">Пол</span>
                     <select id="gender1">
-                        <option>Мужской</option>
-                        <option>Женский</option>
+                        <option value="" disabled selected hidden></option>
+                        <option value="Мужской / Male">Мужской</option>
+                        <option value="Женский / Female">Женский</option>
                     </select>
                     <br>
                     <!-- date of birth -->
+                    <span class="details">Дата рождения</span>
                     <input type="text" size="40" id="dateOfBirth1">
                     <br>
                     <!-- passport data -->
-                    <input type="text" size="40" id="series1">
+<!--                    <input type="text" size="40" id="series1">-->
+                    <span class="details">Номер паспорта</span>
                     <input type="text" size="40" id="idPassport1">
+                    <span class="details">Дата выдачи</span>
                     <input type="text" size="40" id="dateOfIssue1">
+                    <span class="details">Действителен до</span>
                     <input type="text" size="40" id="validUntil1">
                     <br>
                     <!-- issued by -->
+                    <span class="details">Кем выдан</span>
                     <input type="text" size="40" id="issuedBy1">
                     <br>
                     <!-- state of birth -->
-                    <select id="stateBirth1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                    </select>
+                    <span class="details">Государство рождения</span>
+                    <select id="stateBirth1"></select>
+                    <span class="details">Место рождения</span>
                     <input type="text" size="40" id="placeStateBirth1">
                     <br>
+                    <span class="details">Другое</span>
                     <input type="text" size="40" id="otherStateBirth1">
                     <br>
                     <!--place to get a visa-->
-                    <select id="placeStateGetVisa1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                    </select>
-                    <select id="placeCityGetVisa1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                    </select>
+                    <span class="details">Место получения визы (страна)</span>
+                    <select id="placeStateGetVisa1" onchange="chPlaceStateGetVisa(this)"></select>
+                    <span class="details">Место получения визы (город)</span>
+                    <select id="placeCityGetVisa1"></select>
                     <br>
+                    <span class="details">Другое</span>
                     <input type="text" size="40" id="otherStateGetVisa1">
+                    <span class="details">Другое</span>
                     <input type="text" size="40" id="otherCityGetVisa1">
                     <br>
                     <!--place of residence in the home country-->
+                    <span class="details">Место проживания на родине (адрес)</span>
                     <input type="text" size="40" id="homeAddress1">
                     <br>
                     <!--the level of education-->
-                    <select id="levelEducation1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                    </select>
+                    <span class="details">Уровень образования</span>
+                    <select id="levelEducation1"></select>
                     <br>
                     <!--faculty-->
-                    <select id="faculty1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                    </select>
+                    <span class="details">Институт/факультет</span>
+                    <select id="faculty1"></select>
                     <br>
                     <!-- course -->
-                    <select id="course1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                    </select>
+                    <span class="details">Курс</span>
+                    <select id="course1"></select>
+
+
 
 
                         <!--remove button-->

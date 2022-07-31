@@ -3,6 +3,9 @@ let isEndDateIncluded = document.getElementById('isEndDateIncluded')
 let totalDays = document.getElementById('totalDays')
 let totalWorkDays = document.getElementById('totalWorkDays')
 let poDate = document.getElementById('poDate')
+let poDateDays = document.getElementById('poDateDays')
+let thirdPoDate = document.getElementById('thirdPoDate')
+
 
 let isHoliday = ["01.01.2022",
     "02.01.2022",
@@ -98,12 +101,10 @@ let isHoliday = ["01.01.2022",
 
 // default value
 cDate.valueAsDate = new Date()
+poDate.valueAsDate = new Date(calcPoWorkDate(cDate.valueAsDate, totalWorkDays.valueAsNumber))
+totalDays.valueAsNumber = calcTotalDays(cDate.valueAsDate, poDate.valueAsDate)
 
-let poStartDate = new Date(cDate.valueAsDate)
-poStartDate.setDate(poStartDate.getDate() + totalDays.valueAsNumber)
-poDate.valueAsDate = poStartDate
-
-totalWorkDays.valueAsNumber = calcWorkDays(cDate.valueAsDate, poDate.valueAsDate)
+thirdPoDate.valueAsDate = new Date(calcThirdPoDate(poDate.valueAsDate, poDateDays.valueAsNumber))
 //
 
 
@@ -115,15 +116,18 @@ cDate.onchange = function () {
 poDate.onchange = function () {
     totalDays.valueAsNumber = calcTotalDays(cDate.valueAsDate, poDate.valueAsDate)
     totalWorkDays.valueAsNumber = calcWorkDays(cDate.valueAsDate, poDate.valueAsDate)
+    thirdPoDate.valueAsDate = new Date(calcThirdPoDate(poDate.valueAsDate, poDateDays.valueAsNumber))
 }
 totalDays.onchange = function () {
     calcPoDate(cDate.valueAsDate, totalDays.valueAsNumber)
     totalWorkDays.valueAsNumber = calcWorkDays(cDate.valueAsDate, poDate.valueAsDate)
+    thirdPoDate.valueAsDate = new Date(calcThirdPoDate(poDate.valueAsDate, poDateDays.valueAsNumber))
 }
 
 totalWorkDays.onchange = function () {
     poDate.valueAsDate = new Date(calcPoWorkDate(cDate.valueAsDate, totalWorkDays.valueAsNumber))
     totalDays.valueAsNumber = calcTotalDays(cDate.valueAsDate, poDate.valueAsDate)
+    thirdPoDate.valueAsDate = new Date(calcThirdPoDate(poDate.valueAsDate, poDateDays.valueAsNumber))
 }
 
 isEndDateIncluded.onchange = function () {
@@ -131,6 +135,13 @@ isEndDateIncluded.onchange = function () {
     totalWorkDays.valueAsNumber = calcWorkDays(cDate.valueAsDate, poDate.valueAsDate)
 }
 
+thirdPoDate.onchange = function () {
+    poDateDays.valueAsNumber = calcPoDateDays(poDate.valueAsDate, thirdPoDate.valueAsDate)
+}
+
+poDateDays.onchange = function () {
+    thirdPoDate.valueAsDate = new Date(calcThirdPoDate(poDate.valueAsDate, poDateDays.valueAsNumber))
+}
 //
 
 
@@ -138,8 +149,14 @@ isEndDateIncluded.onchange = function () {
 
 function calcPoDate(data, days) {
     let newData = new Date(data)
-    newData.setDate(newData.getDate() + days)
-    poDate.valueAsDate = newData
+    if (isEndDateIncluded.checked) {
+        newData.setDate(newData.getDate() + days-1)
+        poDate.valueAsDate = newData
+    }
+    else {
+        newData.setDate(newData.getDate() + days)
+        poDate.valueAsDate = newData
+    }
 }
 
 function calcPoWorkDate(c, workDays) {
@@ -286,3 +303,18 @@ function calcWorkDays(c,po) {
     }
 }
 
+
+function calcThirdPoDate(data, days) {
+    let newData = new Date(data)
+    newData.setDate(newData.getDate() + days-1)
+    return newData
+}
+
+function calcPoDateDays(c, po) {
+    const oneDay = 1000 * 60 * 60 * 24 //in milliseconds
+    let date1 = new Date(c)
+    let date2 = new Date(po)
+    let between = (date2 - date1)/oneDay
+
+    return between+1
+}
