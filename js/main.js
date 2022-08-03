@@ -513,163 +513,10 @@ window.generateSolicitation = function generate() {
 
 
 
+
 // Письмо обоснование
 window.generateJustification = function generate() {
     path = ('../Templates/4.docx')
-    // for (let i =0; i<countTab();i++) {
-    //     let tabs = document.getElementsByClassName('nav-tabs')[0].getElementsByTagName('li')
-    //     let elem = tabs[i]
-    //     let indexTab = parseInt(elem.id.match(/\d+/))
-    //
-    //
-    //     loadFile(
-    //         path,
-    //         function (error, content) {
-    //             if (error) {
-    //                 throw error;
-    //             }
-    //             var zip = new PizZip(content);
-    //             var doc = new window.docxtemplater(zip, {
-    //                 paragraphLoop: true,
-    //                 linebreaks: true,
-    //             });
-    //
-    //
-    //
-    //             // regisration on
-    //             let registrSklon = ''
-    //             switch (document.getElementById('registrationOn').value) {
-    //                 case "Круглов":
-    //                     registrSklon = 'В.В. Круглов'
-    //                     break
-    //                 case "Морозова":
-    //                     registrSklon = "О.А. Морозова"
-    //                     break
-    //             }
-    //
-    //             // grazd
-    //             let grazdSklon = document.getElementById('grazd').options[document.getElementById('grazd').selectedIndex].text
-    //             switch (document.getElementById('grazd').options[document.getElementById('grazd').selectedIndex].text) {
-    //                 case 'Другое':
-    //                     grazdSklon = document.getElementById('otherGrazd').value
-    //                     break
-    //             }
-    //             // gender
-    //             let genSklonM = "□"
-    //             let genSklonW = "□"
-    //             let gen = ''
-    //             if (document.getElementById('gender'+indexTab).value == 'Мужской / Male') {
-    //                 genSklonM = '☒'
-    //                 gen = '(М)'
-    //             }
-    //             else {
-    //                 genSklonW = '☒'
-    //                 gen = '(Ж)'
-    //             }
-    //             // entry Visa
-    //             let entryVisaSklonO = '□'
-    //             let entryVisaSklonD = '□'
-    //             let entryVisaSklonM = '□'
-    //             switch (document.getElementById('entryVisa'+indexTab).options[document.getElementById('entryVisa'+indexTab).selectedIndex].text) {
-    //                 case "Однократная":
-    //                     entryVisaSklonO = '☒'
-    //                     break
-    //                 case "Двукратная":
-    //                     entryVisaSklonD = '☒'
-    //                     break
-    //                 case "Многократная":
-    //                     entryVisaSklonM = '☒'
-    //                     break
-    //
-    //             }
-    //             // typeVisa
-    //             let typeVisaSklonU = '□'
-    //             let typeVisaSklonR = '□'
-    //             let typeVisaSklonG = '□'
-    //             switch (document.getElementById('typeVisa'+indexTab).options[document.getElementById('typeVisa'+indexTab).selectedIndex].text) {
-    //                 case 'Учебная':
-    //                     typeVisaSklonU = '☒'
-    //                     break
-    //                 case 'Рабочая':
-    //                     typeVisaSklonR = '☒'
-    //                     break
-    //                 case 'Гуманитарная':
-    //                     typeVisaSklonG = '☒'
-    //                     break
-    //
-    //             }
-    //             // stateBirth
-    //             let stateBirthSklon = document.getElementById('stateBirth'+indexTab).options[document.getElementById('stateBirth'+indexTab).selectedIndex].text
-    //             switch (document.getElementById('stateBirth'+indexTab).options[document.getElementById('stateBirth'+indexTab).selectedIndex].text) {
-    //                 case "Другое":
-    //                     stateBirthSklon = document.getElementById('otherStateBirth'+indexTab).value
-    //                     break
-    //             }
-    //             // place State Get Visa
-    //             let placeStateGetVisaSklon = document.getElementById('placeStateGetVisa'+indexTab).options[document.getElementById('placeStateGetVisa'+indexTab).selectedIndex].text
-    //             switch (document.getElementById('placeStateGetVisa'+indexTab).options[document.getElementById('placeStateGetVisa'+indexTab).selectedIndex].text) {
-    //                 case "Другое":
-    //                     placeStateGetVisaSklon = document.getElementById('otherStateGetVisa'+indexTab).value
-    //                     break
-    //             }
-    //             // place City Get Visa
-    //             let placeCityGetVisaSklon = document.getElementById('placeCityGetVisa'+indexTab).options[document.getElementById('placeCityGetVisa'+indexTab).selectedIndex].text
-    //             switch (document.getElementById('placeCityGetVisa'+indexTab).options[document.getElementById('placeCityGetVisa'+indexTab).selectedIndex].text) {
-    //                 case "Другое":
-    //                     placeCityGetVisaSklon = document.getElementById('otherCityGetVisa'+indexTab).value
-    //                     break
-    //             }
-    //
-    //             // Render the document (Replace {first_name} by John, {last_name} by Doe, ...)
-    //             doc.render({
-    //
-    //                 cDate: new Date(document.getElementById('cDate').value).toLocaleDateString(),
-    //                 purpose: document.getElementById('purpose').options[document.getElementById('purpose').selectedIndex].text.toUpperCase(),
-    //                 poDateDays: document.getElementById('poDateDays').value,
-    //                 poDate: new Date(document.getElementById('poDate').value).toLocaleDateString(),
-    //                 thirdPoDate: new Date(document.getElementById('thirdPoDate').value).toLocaleDateString(),
-    //                 entryVisaO: entryVisaSklonO,
-    //                 entryVisaD: entryVisaSklonD,
-    //                 entryVisaM: entryVisaSklonM,
-    //                 typeVisaU: typeVisaSklonU,
-    //                 typeVisaR: typeVisaSklonR,
-    //                 typeVisaG: typeVisaSklonG,
-    //                 firstNameRu: document.getElementById('firstNameRu'+indexTab).value.toUpperCase(),
-    //                 lastNameRu: document.getElementById('lastNameRu'+indexTab).value.toUpperCase(),
-    //                 firstNameEn: document.getElementById('firstNameEn'+indexTab).value.toUpperCase(),
-    //                 lastNameEn: document.getElementById('lastNameEn'+indexTab).value.toUpperCase(),
-    //                 genM: genSklonM,
-    //                 genW: genSklonW,
-    //                 dateOfBirth: document.getElementById('dateOfBirth'+indexTab).value,
-    //                 stateBirth: stateBirthSklon.toUpperCase(),
-    //                 placeStateBirth: document.getElementById('placeStateBirth' + indexTab).value.toUpperCase(),
-    //                 grazd: grazdSklon.toUpperCase(),
-    //                 placeStateGetVisa: placeStateGetVisaSklon.toUpperCase(),
-    //                 placeCityGetVisa: placeCityGetVisaSklon.toUpperCase(),
-    //                 homeAddress: document.getElementById('homeAddress'+indexTab).value.toUpperCase(),
-    //                 idPassport: document.getElementById('idPassport'+indexTab).value.toUpperCase(),
-    //                 issuedBy: document.getElementById('issuedBy'+indexTab).value.toUpperCase(),
-    //                 dateOfIssue: document.getElementById('dateOfIssue'+indexTab).value.toUpperCase(),
-    //                 validUntil: document.getElementById('validUntil'+indexTab).value.toUpperCase(),
-    //                 registrationOn: registrSklon,
-    //             });
-    //
-    //             var out = doc.getZip().generate({
-    //                 type: "blob",
-    //                 mimeType:
-    //                     "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-    //                 // compression: DEFLATE adds a compression step.
-    //                 // For a 50MB output document, expect 500ms additional CPU time
-    //                 compression: "DEFLATE",
-    //             });
-    //             // Output the document using Data-URI
-    //             saveAs(out, "ХОДАТАЙСТВО - " + document.getElementById('firstNameRu'+indexTab).value.toUpperCase() + " " +
-    //                 document.getElementById('lastNameRu'+indexTab).value.toUpperCase() + gen +
-    //                 " - " + document.getElementById('levelEducation'+indexTab).options[document.getElementById('levelEducation'+indexTab).selectedIndex].text + ".docx"
-    //             );
-    //         }
-    //     );
-    // }
 
     let students = []
     let facultys = []
@@ -909,6 +756,246 @@ window.generateJustification = function generate() {
 };
 
 
+// Опись
+window.generateInventory = function generate() {
+    path = ('../Templates/5.docx')
+    // for (let i =0; i<countTab();i++) {
+    //     let tabs = document.getElementsByClassName('nav-tabs')[0].getElementsByTagName('li')
+    //     let elem = tabs[i]
+    //     let indexTab = parseInt(elem.id.match(/\d+/))
+    //
+    //
+    //     loadFile(
+    //         path,
+    //         function (error, content) {
+    //             if (error) {
+    //                 throw error;
+    //             }
+    //             var zip = new PizZip(content);
+    //             var doc = new window.docxtemplater(zip, {
+    //                 paragraphLoop: true,
+    //                 linebreaks: true,
+    //             });
+    //
+    //
+    //
+    //             // regisration on
+    //             let registrSklon = ''
+    //             switch (document.getElementById('registrationOn').value) {
+    //                 case "Круглов":
+    //                     registrSklon = 'В.В. Круглов'
+    //                     break
+    //                 case "Морозова":
+    //                     registrSklon = "О.А. Морозова"
+    //                     break
+    //             }
+    //
+    //             // grazd
+    //             let grazdSklon = document.getElementById('grazd').options[document.getElementById('grazd').selectedIndex].text
+    //             switch (document.getElementById('grazd').options[document.getElementById('grazd').selectedIndex].text) {
+    //                 case 'Другое':
+    //                     grazdSklon = document.getElementById('otherGrazd').value
+    //                     break
+    //             }
+    //             // gender
+    //             let genSklonM = "□"
+    //             let genSklonW = "□"
+    //             let gen = ''
+    //             if (document.getElementById('gender'+indexTab).value == 'Мужской / Male') {
+    //                 genSklonM = '☒'
+    //                 gen = '(М)'
+    //             }
+    //             else {
+    //                 genSklonW = '☒'
+    //                 gen = '(Ж)'
+    //             }
+    //             // entry Visa
+    //             let entryVisaSklonO = '□'
+    //             let entryVisaSklonD = '□'
+    //             let entryVisaSklonM = '□'
+    //             switch (document.getElementById('entryVisa'+indexTab).options[document.getElementById('entryVisa'+indexTab).selectedIndex].text) {
+    //                 case "Однократная":
+    //                     entryVisaSklonO = '☒'
+    //                     break
+    //                 case "Двукратная":
+    //                     entryVisaSklonD = '☒'
+    //                     break
+    //                 case "Многократная":
+    //                     entryVisaSklonM = '☒'
+    //                     break
+    //
+    //             }
+    //             // typeVisa
+    //             let typeVisaSklonU = '□'
+    //             let typeVisaSklonR = '□'
+    //             let typeVisaSklonG = '□'
+    //             switch (document.getElementById('typeVisa'+indexTab).options[document.getElementById('typeVisa'+indexTab).selectedIndex].text) {
+    //                 case 'Учебная':
+    //                     typeVisaSklonU = '☒'
+    //                     break
+    //                 case 'Рабочая':
+    //                     typeVisaSklonR = '☒'
+    //                     break
+    //                 case 'Гуманитарная':
+    //                     typeVisaSklonG = '☒'
+    //                     break
+    //
+    //             }
+    //             // stateBirth
+    //             let stateBirthSklon = document.getElementById('stateBirth'+indexTab).options[document.getElementById('stateBirth'+indexTab).selectedIndex].text
+    //             switch (document.getElementById('stateBirth'+indexTab).options[document.getElementById('stateBirth'+indexTab).selectedIndex].text) {
+    //                 case "Другое":
+    //                     stateBirthSklon = document.getElementById('otherStateBirth'+indexTab).value
+    //                     break
+    //             }
+    //             // place State Get Visa
+    //             let placeStateGetVisaSklon = document.getElementById('placeStateGetVisa'+indexTab).options[document.getElementById('placeStateGetVisa'+indexTab).selectedIndex].text
+    //             switch (document.getElementById('placeStateGetVisa'+indexTab).options[document.getElementById('placeStateGetVisa'+indexTab).selectedIndex].text) {
+    //                 case "Другое":
+    //                     placeStateGetVisaSklon = document.getElementById('otherStateGetVisa'+indexTab).value
+    //                     break
+    //             }
+    //             // place City Get Visa
+    //             let placeCityGetVisaSklon = document.getElementById('placeCityGetVisa'+indexTab).options[document.getElementById('placeCityGetVisa'+indexTab).selectedIndex].text
+    //             switch (document.getElementById('placeCityGetVisa'+indexTab).options[document.getElementById('placeCityGetVisa'+indexTab).selectedIndex].text) {
+    //                 case "Другое":
+    //                     placeCityGetVisaSklon = document.getElementById('otherCityGetVisa'+indexTab).value
+    //                     break
+    //             }
+    //
+    //             // Render the document (Replace {first_name} by John, {last_name} by Doe, ...)
+    //             doc.render({
+    //
+    //                 cDate: new Date(document.getElementById('cDate').value).toLocaleDateString(),
+    //                 purpose: document.getElementById('purpose').options[document.getElementById('purpose').selectedIndex].text.toUpperCase(),
+    //                 poDateDays: document.getElementById('poDateDays').value,
+    //                 poDate: new Date(document.getElementById('poDate').value).toLocaleDateString(),
+    //                 thirdPoDate: new Date(document.getElementById('thirdPoDate').value).toLocaleDateString(),
+    //                 entryVisaO: entryVisaSklonO,
+    //                 entryVisaD: entryVisaSklonD,
+    //                 entryVisaM: entryVisaSklonM,
+    //                 typeVisaU: typeVisaSklonU,
+    //                 typeVisaR: typeVisaSklonR,
+    //                 typeVisaG: typeVisaSklonG,
+    //                 firstNameRu: document.getElementById('firstNameRu'+indexTab).value.toUpperCase(),
+    //                 lastNameRu: document.getElementById('lastNameRu'+indexTab).value.toUpperCase(),
+    //                 firstNameEn: document.getElementById('firstNameEn'+indexTab).value.toUpperCase(),
+    //                 lastNameEn: document.getElementById('lastNameEn'+indexTab).value.toUpperCase(),
+    //                 genM: genSklonM,
+    //                 genW: genSklonW,
+    //                 dateOfBirth: document.getElementById('dateOfBirth'+indexTab).value,
+    //                 stateBirth: stateBirthSklon.toUpperCase(),
+    //                 placeStateBirth: document.getElementById('placeStateBirth' + indexTab).value.toUpperCase(),
+    //                 grazd: grazdSklon.toUpperCase(),
+    //                 placeStateGetVisa: placeStateGetVisaSklon.toUpperCase(),
+    //                 placeCityGetVisa: placeCityGetVisaSklon.toUpperCase(),
+    //                 homeAddress: document.getElementById('homeAddress'+indexTab).value.toUpperCase(),
+    //                 idPassport: document.getElementById('idPassport'+indexTab).value.toUpperCase(),
+    //                 issuedBy: document.getElementById('issuedBy'+indexTab).value.toUpperCase(),
+    //                 dateOfIssue: document.getElementById('dateOfIssue'+indexTab).value.toUpperCase(),
+    //                 validUntil: document.getElementById('validUntil'+indexTab).value.toUpperCase(),
+    //                 registrationOn: registrSklon,
+    //             });
+    //
+    //             var out = doc.getZip().generate({
+    //                 type: "blob",
+    //                 mimeType:
+    //                     "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    //                 // compression: DEFLATE adds a compression step.
+    //                 // For a 50MB output document, expect 500ms additional CPU time
+    //                 compression: "DEFLATE",
+    //             });
+    //             // Output the document using Data-URI
+    //             saveAs(out, "ХОДАТАЙСТВО - " + document.getElementById('firstNameRu'+indexTab).value.toUpperCase() + " " +
+    //                 document.getElementById('lastNameRu'+indexTab).value.toUpperCase() + gen +
+    //                 " - " + document.getElementById('levelEducation'+indexTab).options[document.getElementById('levelEducation'+indexTab).selectedIndex].text + ".docx"
+    //             );
+    //         }
+    //     );
+    // }
+
+    let students = []
+
+    // regisration on
+    let registrSklon = ''
+    switch (document.getElementById('registrationOn').value) {
+        case "Круглов":
+            registrSklon = 'Начальник УМС                                                                                          В.В. Круглов'
+            break
+        case "Морозова":
+            registrSklon = "Заместитель начальника УМС                                                                О.А. Морозова"
+            break
+    }
+
+    //grazd
+    let grazdSklon = document.getElementById('grazd').value
+    switch (document.getElementById('grazd').value) {
+        case 'Другое':
+            grazdSklon = document.getElementById('otherGrazd').value
+            break
+    }
+
+
+
+    for (let i =0; i<countTab();i++) {
+        let tabs = document.getElementsByClassName('nav-tabs')[0].getElementsByTagName('li')
+        let elem = tabs[i]
+        let indexTab = parseInt(elem.id.match(/\d+/))
+
+
+        //students
+        students.push({
+            firstNameRu: document.getElementById('firstNameRu'+indexTab).value.toUpperCase(),
+            lastNameRu: document.getElementById('lastNameRu' + indexTab).value.toUpperCase(),
+            entryVisa: document.getElementById('entryVisa'+indexTab).options[document.getElementById('entryVisa'+indexTab).selectedIndex].text
+        })
+    }
+
+
+    loadFile(
+        path,
+        function (error, content) {
+            if (error) {
+                throw error;
+            }
+            var zip = new PizZip(content);
+            var doc = new window.docxtemplater(zip, {
+                paragraphLoop: true,
+                linebreaks: true,
+            });
+
+            doc.render({
+                cDate: new Date(document.getElementById('cDate').value).toLocaleDateString(),
+                'students': students,
+                registrationOn: registrSklon,
+                grazd: grazdSklon.toUpperCase(),
+                purpose: document.getElementById('purpose').options[document.getElementById('purpose').selectedIndex].text.toUpperCase(),
+            })
+
+
+            var out = doc.getZip().generate({
+                type: "blob",
+                mimeType:
+                    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                // compression: DEFLATE adds a compression step.
+                // For a 50MB output document, expect 500ms additional CPU time
+                compression: "DEFLATE",
+            });
+
+
+            let nameFile = 'Опись - '
+            for (let i = 0; i<students.length; i++) {
+                nameFile = nameFile + students[i].lastNameRu.toUpperCase() + ' ' + students[i].firstNameRu.toUpperCase()+', '
+            }
+            console.log(nameFile)
+            nameFile = nameFile.slice(0,-2) + '.docx'
+
+            console.log(nameFile)
+            // Output the document using Data-URI
+            saveAs(out, nameFile);
+        }
+    );
+};
 
 
 // function proverka() {
