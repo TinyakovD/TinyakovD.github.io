@@ -678,6 +678,10 @@ window.generateJustification = function generate() {
 
         // courses
         switch (document.getElementById('course'+indexTab).value) {
+            case " ":
+                if (!courses.some(el => el.nameText === ' ')) {
+                    courses.push({nameText: '', zap: ''})}
+                break
             case "1":
                 if (!courses.some(el => el.nameText === '1')) {
                     courses.push({nameText: '1', zap: ', '})}
@@ -857,3 +861,12 @@ window.generateInventory = function generate() {
 //         else {}
 //     })
 // }
+
+function generateAll() {
+    generateSupportLetter()
+    generateGuarLetter()
+    generateSolicitation()
+
+    generateJustification()
+    generateInventory()
+}
