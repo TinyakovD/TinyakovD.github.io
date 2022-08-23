@@ -157,7 +157,9 @@ function createTab() {
     fillingSelect(selPlaceStateGetVisa, placeStateGetVisa.id)
     fillingSelect(selPlaceCityGetVisaOther, placeCityGetVisa.id)
     fillingSelect(selStateBirth,stateBirth.id)
-    fillingSelect(selTypeVisaRab,typeVisa.id)
+
+
+    fillingTypeVisa() //!!!
 
     fillingLevelEducation(selLevelEducation, levelEducation.id)
     fillingGender(selGender, gender.id)
@@ -222,6 +224,8 @@ let selFaculty = ["",
     "(ИМО) Институт международного образования",
     "(ИРЦО) Институт развития цифрового образования",]
 
+
+
 let selCourse = [" ","1","2","3","4","5"]
 
 
@@ -230,12 +234,36 @@ fillingSelect(selCourse,'course1')
 fillingSelect(selPlaceStateGetVisa, 'placeStateGetVisa1')
 fillingSelect(selPlaceCityGetVisaOther, 'placeCityGetVisa1')
 fillingSelect(selStateBirth,'stateBirth1')
-fillingSelect(selTypeVisaUch,'typeVisa1')
+fillingTypeVisa()
+
 fillingGender(selGender, 'gender1')
 fillingLevelEducation(selLevelEducation, 'levelEducation1')
 fillingFaculty(selFaculty, 'faculty1')
 
+function fillingTypeVisa() {
+    let chPurpose = document.getElementById('purpose')
 
+    let tabs = document.getElementsByClassName('nav-tabs')[0].getElementsByTagName('li')
+
+    if (chPurpose.value == 'Учеба' || chPurpose.value == "Краткосрочная учеба") {
+        for (let i=0; i<countTab(); i++) {
+            let indexTab = parseInt(tabs[i].id.match(/\d+/))
+            fillingSelect(selTypeVisaUch, 'typeVisa'+indexTab)
+        }
+    }
+    else if (chPurpose.value == "(НТС)") {
+        for (let i=0; i<countTab(); i++) {
+            let indexTab = parseInt(tabs[i].id.match(/\d+/))
+            fillingSelect(selTypeVisaGum, 'typeVisa'+indexTab)
+        }
+    }
+    else if (chPurpose.value == "Трудовая деятельность") {
+        for (let i=0; i<countTab(); i++) {
+            let indexTab = parseInt(tabs[i].id.match(/\d+/))
+            fillingSelect(selTypeVisaRab, 'typeVisa'+indexTab)
+        }
+    }
+}
 function fillingSelect (nameMassiveSelect, idSelect) {
     document.getElementById(idSelect).innerHTML=''
 
@@ -318,10 +346,35 @@ function fillingFaculty(nameMassiveSelect, idSelect) {
         let opt = nameMassiveSelect[i]
         let newOption = document.createElement('option')
         let chooseSelect = document.getElementById(idSelect)
+
+
         if (opt == "(ИСГО) Институт социально-гуманитарного образования") {
             newOption.value = "Институт социально-гуманитарного образования / Institute of Social Studies and Humanities"
             newOption.text = opt
-        } else if (opt == "(ИФ) Институт филологии") {
+        }
+
+        else if (opt == "(Музфак) Институт изящных искусств: Музыкальный факультет") {
+            newOption.value = 'Институт изящных искусств: Факультет музыкального искусства / The Institute of Fine Arts'
+            newOption.text = opt
+        }
+        else if (opt == "(Худграф) Институт изящных искусств: Художественно-графический факультет") {
+            newOption.value = 'Институт изящных искусств: Художественно-графический факультет/ The Musical Arts Institute'
+            newOption.text = opt
+        }
+        else if (opt == "(ИД) Институт детства") {
+            newOption.value = 'Институт детства / The Institute of Childhood'
+            newOption.text = opt
+        }
+        else if (opt == "(ИФТИС) Институт физики, технологии и информационных систем") {
+            newOption.value = 'Институт физики, технологии и информационных систем / The Institute of Physics, Technology, and Informational Systems'
+            newOption.text = opt
+        }
+        else if (opt == "(ИРЦО) Институт развития цифрового образования") {
+            newOption.value = 'Институт развития цифрового образования / The Institute of Digital Education Development'
+            newOption.text = opt
+        }
+
+        else if (opt == "(ИФ) Институт филологии") {
             newOption.value = 'Институт филологии / Institute of Philology'
             newOption.text = opt
         }
