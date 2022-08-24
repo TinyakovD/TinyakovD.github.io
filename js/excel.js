@@ -170,4 +170,63 @@ function findInfo(id) {
 
 
 
+function updateNameDisplay() {
+    var input = document.querySelector('#excel');
+    var preview = document.querySelector('.preview');
+    var fileTypes = [
+        'application/excel',
+        'application/vnd.ms-excel',
+        'application/x-excel',
+        'application/x-msexcel',
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    ]
+    var curFiles = input.files;
+
+
+    while(preview.firstChild) {
+        preview.removeChild(preview.firstChild);
+    }
+
+    if(curFiles.length === 0) {
+        var para = document.createElement('p');
+        para.textContent = 'Вы не выбрали файл';
+        preview.appendChild(para);
+    } else {
+
+        var para = document.createElement('p');
+        if(validFileType(curFiles[0])) {
+            para.textContent = 'File name ' + curFiles[0].name;
+            var image = document.createElement('img');
+            image.className = 'iconFile'
+            image.src = '../excel.png';
+
+            preview.appendChild(image);
+            preview.appendChild(para);
+
+        } else {
+            para.textContent = 'Файл ' + curFiles[0].name + ' имеет неверный формат.';
+            preview.appendChild(para);
+        }
+
+        list.appendChild(preview);
+
+    }
+
+
+
+    function validFileType(file) {
+        for(var i = 0; i < fileTypes.length; i++) {
+            if(file.type === fileTypes[i]) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+}
+
+
+
+
 

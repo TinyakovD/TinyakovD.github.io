@@ -129,8 +129,8 @@ window.generateGuarLetter = function generate() {
                         errorHandler(error);
                     }
                     var out = doc.getZip().generate();
-                    zipDocs.file("Гарантийное письмо - " + document.getElementById('firstNameRu'+indexTab).value.toUpperCase() + " " +
-                        document.getElementById('lastNameRu'+indexTab).value.toUpperCase() + gen +
+                    zipDocs.file("Гарантийное письмо - " + document.getElementById('lastNameRu'+indexTab).value.toUpperCase() + " " +
+                        document.getElementById('firstNameRu'+indexTab).value.toUpperCase() + gen +
                         " - " + document.getElementById('levelEducation'+indexTab).options[document.getElementById('levelEducation'+indexTab).selectedIndex].text + ".docx"
                         , out, {base64: true}
                     );
@@ -368,8 +368,8 @@ window.generateSupportLetter = function generate() {
 
                     var out = doc.getZip().generate();
                     // Output the document using Data-URI
-                    zipDocs.file("Письмо поддержки - " + document.getElementById('firstNameRu'+indexTab).value.toUpperCase() + " " +
-                        document.getElementById('lastNameRu'+indexTab).value.toUpperCase() + gen +
+                    zipDocs.file("Письмо поддержки - " + document.getElementById('lastNameRu'+indexTab).value.toUpperCase() + " " +
+                        document.getElementById('firstNameRu'+indexTab).value.toUpperCase() + gen +
                         " - " + document.getElementById('levelEducation'+indexTab).options[document.getElementById('levelEducation'+indexTab).selectedIndex].text + ".docx"
                         , out, {base64: true}
                     )
@@ -561,8 +561,8 @@ window.generateSolicitation = function generate() {
 
                     var out = doc.getZip().generate();
 
-                    zipDocs.file("ХОДАТАЙСТВО - " + document.getElementById('firstNameRu'+indexTab).value.toUpperCase() + " " +
-                        document.getElementById('lastNameRu'+indexTab).value.toUpperCase() + gen +
+                    zipDocs.file("ХОДАТАЙСТВО - " + document.getElementById('lastNameRu'+indexTab).value.toUpperCase() + " " +
+                        document.getElementById('firstNameRu'+indexTab).value.toUpperCase() + gen +
                         " - " + document.getElementById('levelEducation'+indexTab).options[document.getElementById('levelEducation'+indexTab).selectedIndex].text + ".docx"
                         , out, {base64: true}
                     )
@@ -1060,12 +1060,12 @@ function generateAll() {
                         errorHandler(error);
                     }
                     var out = doc.getZip().generate();
-                    zipTotal.file(document.getElementById('firstNameRu'+indexTab).value.toUpperCase() + " " +
-                        document.getElementById('lastNameRu'+indexTab).value.toUpperCase() + gen +
+                    zipTotal.file(document.getElementById('lastNameRu'+indexTab).value.toUpperCase() + " " +
+                        document.getElementById('firstNameRu'+indexTab).value.toUpperCase() + gen +
                         " - " + document.getElementById('levelEducation'+indexTab).options[document.getElementById('levelEducation'+indexTab).selectedIndex].text+'/'
 
-                        +"Гарантийное письмо - " + document.getElementById('firstNameRu'+indexTab).value.toUpperCase() + " " +
-                        document.getElementById('lastNameRu'+indexTab).value.toUpperCase() + gen +
+                        +"Гарантийное письмо - " + document.getElementById('lastNameRu'+indexTab).value.toUpperCase() + " " +
+                        document.getElementById('firstNameRu'+indexTab).value.toUpperCase() + gen +
                         " - " + document.getElementById('levelEducation'+indexTab).options[document.getElementById('levelEducation'+indexTab).selectedIndex].text + ".docx"
                         , out, {base64: true}
                     );
@@ -1303,12 +1303,12 @@ function generateAll() {
 
                     var out = doc.getZip().generate();
                     // Output the document using Data-URI
-                    zipTotal.file(document.getElementById('firstNameRu'+indexTab).value.toUpperCase() + " " +
-                        document.getElementById('lastNameRu'+indexTab).value.toUpperCase() + gen +
+                    zipTotal.file(document.getElementById('lastNameRu'+indexTab).value.toUpperCase() + " " +
+                        document.getElementById('firstNameRu'+indexTab).value.toUpperCase() + gen +
                         " - " + document.getElementById('levelEducation'+indexTab).options[document.getElementById('levelEducation'+indexTab).selectedIndex].text + "/"
 
-                        +"Письмо поддержки - " + document.getElementById('firstNameRu'+indexTab).value.toUpperCase() + " " +
-                        document.getElementById('lastNameRu'+indexTab).value.toUpperCase() + gen +
+                        +"Письмо поддержки - " + document.getElementById('lastNameRu'+indexTab).value.toUpperCase() + " " +
+                        document.getElementById('firstNameRu'+indexTab).value.toUpperCase() + gen +
                         " - " + document.getElementById('levelEducation'+indexTab).options[document.getElementById('levelEducation'+indexTab).selectedIndex].text + ".docx"
                         , out, {base64: true}
                     )
@@ -1499,12 +1499,12 @@ function generateAll() {
 
                     var out = doc.getZip().generate();
 
-                    zipTotal.file(document.getElementById('firstNameRu'+indexTab).value.toUpperCase() + " " +
-                        document.getElementById('lastNameRu'+indexTab).value.toUpperCase() + gen +
+                    zipTotal.file(document.getElementById('lastNameRu'+indexTab).value.toUpperCase() + " " +
+                        document.getElementById('firstNameRu'+indexTab).value.toUpperCase() + gen +
                         " - " + document.getElementById('levelEducation'+indexTab).options[document.getElementById('levelEducation'+indexTab).selectedIndex].text + "/"
 
-                        +"ХОДАТАЙСТВО - " + document.getElementById('firstNameRu'+indexTab).value.toUpperCase() + " " +
-                        document.getElementById('lastNameRu'+indexTab).value.toUpperCase() + gen +
+                        +"ХОДАТАЙСТВО - " + document.getElementById('lastNameRu'+indexTab).value.toUpperCase() + " " +
+                        document.getElementById('firstNameRu'+indexTab).value.toUpperCase() + gen +
                         " - " + document.getElementById('levelEducation'+indexTab).options[document.getElementById('levelEducation'+indexTab).selectedIndex].text + ".docx"
                         , out, {base64: true}
                     )

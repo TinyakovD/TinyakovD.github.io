@@ -23,10 +23,11 @@
 
 
     <div class="container">
-        <div class="import">
+        <div class="importFile">
             <p class="buttonName">Импорт excel файла</p>
             <label for="excel" class="h1Button">Выберите файл</label>
-            <input type="file" id="excel" accept=".xls,.xlsx">
+            <div class="preview"></div>
+            <input type="file" id="excel" accept=".xls,.xlsx" onchange="updateNameDisplay()">
         </div>
 
         <div class="main">

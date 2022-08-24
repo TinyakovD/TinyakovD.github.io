@@ -114,9 +114,9 @@ body {
 
 
 
-/* import */
+/* importFile */
 
-.import {
+.importFile {
     margin-top: 30px;
 }
 
@@ -155,6 +155,14 @@ body {
 
 #excel {
     display: none;
+}
+
+.preview {
+    display: inline-flex;
+    align-items: center;
+}
+.iconFile {
+    width: 30px;
 }
 
 /* calc */
