@@ -205,7 +205,7 @@ let selPlaceCityGetVisaTurkey = ["","Анкара","Стамбул","Антал�
 let selPlaceCityGetVisaTurkmen = ["","Ашхабад","Туркменбаши","Другое"]
 let selPlaceCityGetVisaOther = ["","Другое"]
 let selLevelEducation = [" ","Подфак", "Бакалавриат","Магистратура", "Аспирантура", "Стажировка", "Стажировка(межвуз)"]
-let selFaculty = ["",
+let selFaculty = [" ",
     "(ИСГО) Институт социально-гуманитарного образования",
     "(Музфак) Институт изящных искусств: Музыкальный факультет",
     "(Худграф) Институт изящных искусств: Художественно-графический факультет",
@@ -398,7 +398,7 @@ function fillingFaculty(nameMassiveSelect, idSelect) {
             newOption.value = 'Географический факультет / Faculty of Geography'
             newOption.text = opt
         }
-        else if (opt == "ИИП) Институт истории и политики") {
+        else if (opt == "(ИИП) Институт истории и политики") {
             newOption.value = 'Институт истории и политики / Institute of History and Politics'
             newOption.text = opt
         }
@@ -418,14 +418,18 @@ function fillingFaculty(nameMassiveSelect, idSelect) {
             newOption.value = 'Институт международного образования / Institute of International Education'
             newOption.text = opt
         }
-        else if (opt=="") {
+        else if (opt==" ") {
+            // newOption.selected = true
+            // newOption.hidden = true
+            // newOption.disabled = true
+            newOption.value = opt
+            newOption.text = opt
             newOption.selected = true
-            newOption.hidden = true
-            newOption.disabled = true
         }
         else {
             newOption.value = opt
             newOption.text = opt
+            console.log(newOption.value)
         }
         chooseSelect.add(newOption)
     }

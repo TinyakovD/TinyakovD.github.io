@@ -245,6 +245,9 @@ window.generateSupportLetter = function generate() {
                     // faculty
                     let facultySklon = ''
                     switch (document.getElementById('faculty'+indexTab).options[document.getElementById('faculty'+indexTab).selectedIndex].text) {
+                        default:
+                            facultySklon = ''
+                            break
                         case "(ИСГО) Институт социально-гуманитарного образования":
                             facultySklon = 'Института социально-гуманитарного образования'
                             break
@@ -300,6 +303,9 @@ window.generateSupportLetter = function generate() {
                     // course
                     let courseSklon = ""
                     switch (document.getElementById('course'+indexTab).value) {
+                        default:
+                            courseSklon = ''
+                            break
                         case "1":
                             courseSklon = '1 курса'
                             break
@@ -319,17 +325,20 @@ window.generateSupportLetter = function generate() {
                     // level Education
                     let levelEducSklon = ''
                     switch (document.getElementById('levelEducation'+indexTab).options[document.getElementById('levelEducation'+indexTab).selectedIndex].text) {
+                        default:
+                            levelEducSklon = ''
+                            break
                         case "Подфак":
-                            levelEducSklon = 'подготовительного факультета'
+                            levelEducSklon = 'в число студентов подготовительного факультета в Центр довузовской подготовки иностранных граждан по русскому языку (МПГУ)'
                             break
                         case "Бакалавриат":
-                            levelEducSklon = 'бакалавриата'
+                            levelEducSklon = 'в число студентов бакалавриата'
                             break
                         case "Магистратура":
-                            levelEducSklon = 'магистратуры'
+                            levelEducSklon = 'в число студентов магистратуры'
                             break
                         case "Аспирантура":
-                            levelEducSklon = 'аспирантуры'
+                            levelEducSklon = 'в число студентов аспирантуры'
                             break
                         case "Стажировка":
                             levelEducSklon = 'в число стажирующихся студентов'
@@ -649,6 +658,9 @@ window.generateJustification = function generate() {
 
         // levelEducations
         switch (document.getElementById('levelEducation'+indexTab).options[document.getElementById('levelEducation'+indexTab).selectedIndex].text) {
+            default:
+                levelEducations.push({nameText: "", levelEducSklon: "", zap: ''})
+                break
             case "Подфак" :
                 if (!levelEducations.some(el => el.nameText === 'Подфак')){
                     levelEducations.push({nameText: 'Подфак', levelEducSklon: 'подготовительного факультета', zap: ', '})}
@@ -677,6 +689,9 @@ window.generateJustification = function generate() {
 
         //facultys
         switch (document.getElementById('faculty'+indexTab).options[document.getElementById('faculty'+indexTab).selectedIndex].text) {
+            default:
+                facultys.push({nameText: "", facultySklon: "", zap: ''})
+                break
             case "(ИСГО) Институт социально-гуманитарного образования":
                 if (!facultys.some(el => el.nameText === '(ИСГО) Институт социально-гуманитарного образования')) {
                 facultys.push({nameText: '(ИСГО) Институт социально-гуманитарного образования', facultySklon: 'Института социально-гуманитарного образования', zap: ', '})}
@@ -749,6 +764,9 @@ window.generateJustification = function generate() {
 
         // courses
         switch (document.getElementById('course'+indexTab).value) {
+            default:
+                courses.push({nameText: "", zap: ''})
+                break
             case " ":
                 if (!courses.some(el => el.nameText === ' ')) {
                     courses.push({nameText: '', zap: ''})}
@@ -1180,6 +1198,9 @@ function generateAll() {
                     // faculty
                     let facultySklon = ''
                     switch (document.getElementById('faculty'+indexTab).options[document.getElementById('faculty'+indexTab).selectedIndex].text) {
+                        default:
+                            facultySklon = ""
+                            break
                         case "(ИСГО) Институт социально-гуманитарного образования":
                             facultySklon = 'Института социально-гуманитарного образования'
                             break
@@ -1235,6 +1256,9 @@ function generateAll() {
                     // course
                     let courseSklon = ""
                     switch (document.getElementById('course'+indexTab).value) {
+                        default:
+                            courseSklon = ''
+                            break
                         case "1":
                             courseSklon = '1 курса'
                             break
@@ -1254,17 +1278,20 @@ function generateAll() {
                     // level Education
                     let levelEducSklon = ''
                     switch (document.getElementById('levelEducation'+indexTab).options[document.getElementById('levelEducation'+indexTab).selectedIndex].text) {
+                        default:
+                            levelEducSklon = ''
+                            break
                         case "Подфак":
-                            levelEducSklon = 'подготовительного факультета'
+                            levelEducSklon = 'в число студентов подготовительного факультета в Центр довузовской подготовки иностранных граждан по русскому языку (МПГУ)'
                             break
                         case "Бакалавриат":
-                            levelEducSklon = 'бакалавриата'
+                            levelEducSklon = 'в число студентов бакалавриата'
                             break
                         case "Магистратура":
-                            levelEducSklon = 'магистратуры'
+                            levelEducSklon = 'в число студентов магистратуры'
                             break
                         case "Аспирантура":
-                            levelEducSklon = 'аспирантуры'
+                            levelEducSklon = 'в число студентов аспирантуры'
                             break
                         case "Стажировка":
                             levelEducSklon = 'в число стажирующихся студентов'
@@ -1594,6 +1621,9 @@ function generateAll() {
 
             // levelEducations
             switch (document.getElementById('levelEducation'+indexTab).options[document.getElementById('levelEducation'+indexTab).selectedIndex].text) {
+                default:
+                    levelEducations.push({nameText: "", levelEducSklon: "", zap: ''})
+                    break
                 case "Подфак" :
                     if (!levelEducations.some(el => el.nameText === 'Подфак')){
                         levelEducations.push({nameText: 'Подфак', levelEducSklon: 'подготовительного факультета', zap: ', '})}
@@ -1622,6 +1652,9 @@ function generateAll() {
 
             //facultys
             switch (document.getElementById('faculty'+indexTab).options[document.getElementById('faculty'+indexTab).selectedIndex].text) {
+                default:
+                    facultys.push({nameText: "", facultySklon: "", zap: ''})
+                    break
                 case "(ИСГО) Институт социально-гуманитарного образования":
                     if (!facultys.some(el => el.nameText === '(ИСГО) Институт социально-гуманитарного образования')) {
                         facultys.push({nameText: '(ИСГО) Институт социально-гуманитарного образования', facultySklon: 'Института социально-гуманитарного образования', zap: ', '})}
@@ -1694,6 +1727,9 @@ function generateAll() {
 
             // courses
             switch (document.getElementById('course'+indexTab).value) {
+                default:
+                    courses.push({nameText: "", zap: ''})
+                    break
                 case " ":
                     if (!courses.some(el => el.nameText === ' ')) {
                         courses.push({nameText: '', zap: ''})}

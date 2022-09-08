@@ -155,6 +155,24 @@ function findInfo(id) {
                         levelEducation.value = totalInfo[i]['УРОВЕНЬ ОБРАЗОВАНИЯ/ LEVEL OF EDUCATION']
                         faculty.value = totalInfo[i]['Институт & Факультет (не заполняется, если цель поездки: ТРУДОВАЯ ДЕЯТЕЛЬНОСТЬ) / Institute & Faculty (Do not fill in if the purpose of visit is "WORK")']
                         course.value = totalInfo[i]['КУРС ОБУЧЕНИЯ/YEAR OF STUDYING']
+
+
+                        if (levelEducation.value == undefined|| levelEducation.value == '' || levelEducation.value == ' ') {
+                            levelEducation.value = ' '
+                            levelEducation.text = ''
+                            levelEducation.selected = true
+                        }
+                        if (faculty.value == undefined || faculty.value == '' || faculty.value == ' ') {
+                            faculty.value = ' '
+                            faculty.text = ''
+                            faculty.selected = true
+
+                        }
+                        if (course.value == undefined|| course.value == '' || course.value == ' ') {
+                            course.value = ' '
+                            course.text = ''
+                            course.selected = true
+                        }
                     }
                 }
                 if (personFinded == 0) {
@@ -208,7 +226,7 @@ function updateNameDisplay() {
             preview.appendChild(para);
         }
 
-        list.appendChild(preview);
+        // list.appendChild(preview);
 
     }
 
