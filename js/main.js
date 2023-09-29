@@ -4,6 +4,7 @@ function loadFile(url, callback) {
 // Гарантийное письмо
 window.generateGuarLetter = function generate() {
     path = ('../Templates/1.docx')
+    
     var zipDocs = new PizZip();
         loadFile(
             path,
@@ -92,6 +93,14 @@ window.generateGuarLetter = function generate() {
                             grazdSklon = document.getElementById('otherGrazd').value
                             break
                     }
+
+
+                    //addressProj
+                    let addressProj = 'г. Москва, проспект Вернадского, 88.'
+                    if (document.getElementById('faculty'+indexTab).options[document.getElementById('faculty'+indexTab).selectedIndex].text == "Покровский филиал МПГУ"){
+                        addressProj = 'Владимирская область, Петушинский район, г. Покров, ул. Быкова, д. 24.'
+                    }
+
                     // regisration on
                     let registrSklon = ''
                     switch (document.getElementById('registrationOn').value) {
@@ -116,6 +125,7 @@ window.generateGuarLetter = function generate() {
                         dateOfBirth: document.getElementById('dateOfBirth' + indexTab).value,
                         nStud: document.getElementById('nStud' + indexTab).value,
                         idPassport: document.getElementById('idPassport' + indexTab).value,
+                        addressProj: addressProj,
                         registrationOn: registrSklon
                     });
 
@@ -298,6 +308,9 @@ window.generateSupportLetter = function generate() {
                             break
                         case "(ИРЦО) Институт развития цифрового образования":
                             facultySklon = 'Института развития цифрового образования'
+                            break
+                        case "Покровский филиал МПГУ":
+                            facultySklon = 'Покровского филиала МПГУ'
                             break
                     }
                     // course
@@ -526,6 +539,29 @@ window.generateSolicitation = function generate() {
                             break
                     }
 
+
+                    let addressProj = 'МОСКВА'
+                    let addressProjObl = ''
+                    let addressProjRa = ''
+                    let addressProjCity = 'Г. МОСКВА'
+                    let addressProjStr = 'ПРОСПЕКТ ВЕРНАДСКОГО'
+                    let addressProjD = '88'
+                    let addressProjK = '1'
+                    let addressProjTel = '+7 (965) 109-85-50'
+                    if (document.getElementById('faculty'+indexTab).options[document.getElementById('faculty'+indexTab).selectedIndex].text == "Покровский филиал МПГУ"){
+                        addressProj = 'МОСКВА, ПОКРОВ, ВЛАДИМИРСКАЯ ОБЛАСТЬ'
+                        addressProjObl = 'ВЛАДИМИРСКАЯ ОБЛАСТЬ'
+                        addressProjRa = 'ПЕТУШИНСКИЙ РАЙОН'
+                        addressProjCity = 'Г. ПОКРОВ'
+                        addressProjStr = 'БЫКОВА'
+                        addressProjD = '24'
+                        addressProjK = ''
+                        addressProjTel = '+7 (915) 779-56-73'
+                    }
+
+
+
+
                     // Render the document (Replace {first_name} by John, {last_name} by Doe, ...)
                     doc.setData({
 
@@ -558,6 +594,14 @@ window.generateSolicitation = function generate() {
                         dateOfIssue: document.getElementById('dateOfIssue' + indexTab).value.toUpperCase(),
                         validUntil: document.getElementById('validUntil' + indexTab).value.toUpperCase(),
                         registrationOn: registrSklon,
+                        addressProj: addressProj,
+                        addressProjObl: addressProjObl,
+                        addressProjRa: addressProjRa,
+                        addressProjCity: addressProjCity,
+                        addressProjStr: addressProjStr,
+                        addressProjD: addressProjD,
+                        addressProjK: addressProjK,
+                        addressProjTel: addressProjTel
                     });
 
                     try {
@@ -639,6 +683,7 @@ window.generateJustification = function generate() {
             break
     }
 
+    
 
 
     for (let i =0; i<countTab();i++) {
@@ -654,7 +699,22 @@ window.generateJustification = function generate() {
             zap: ', '
         })
         // nStudent
-        nStudent.push({nSt: document.getElementById('nStud' + indexTab).value, zap: ', '})
+        //old
+        // nStudent.push({nSt: document.getElementById('nStud' + indexTab).value, zap: ', '})
+        // new
+        if (countTab()==1) {
+            nStudent.push({nSt: document.getElementById('nStud' + indexTab).value, zap: ''})
+        }
+        else {
+            if (i==0) {
+                nStudent.push({nSt: document.getElementById('nStud' + indexTab).value, zap: ' - '})
+            }
+            if (i==countTab()-1) {
+                nStudent.push({nSt: document.getElementById('nStud' + indexTab).value, zap: ''})
+            }
+        }
+
+        
 
         // levelEducations
         switch (document.getElementById('levelEducation'+indexTab).options[document.getElementById('levelEducation'+indexTab).selectedIndex].text) {
@@ -760,6 +820,10 @@ window.generateJustification = function generate() {
                 if (!facultys.some(el => el.nameText === '(ИРЦО) Институт развития цифрового образования')) {
                 facultys.push({nameText: '(ИРЦО) Институт развития цифрового образования', facultySklon: 'Института развития цифрового образования', zap: ', '})}
                 break
+            case "Покровский филиал МПГУ":
+                if (!facultys.some(el => el.nameText === 'Покровский филиал МПГУ')) {
+                facultys.push({nameText: 'Покровский филиал МПГУ', facultySklon: 'Покровского филиала МПГУ', zap: ', '})}
+                break
         }
 
         // courses
@@ -840,13 +904,30 @@ window.generateJustification = function generate() {
 
 
             let nameFile = 'Письмо-обоснование - '
-            for (let i = 0; i<students.length; i++) {
-                nameFile = nameFile + students[i].lastNameRu.toUpperCase() + ' ' + students[i].firstNameRu.toUpperCase()+', '
+
+            // old
+            // for (let i = 0; i<students.length; i++) {
+            //     nameFile = nameFile + students[i].lastNameRu.toUpperCase() + ' ' + students[i].firstNameRu.toUpperCase()+', '
+            // }
+            // nameFile = nameFile.slice(0,-2) + '.docx'
+
+
+            // new
+            if (countTab()==1) {
+                nameFile = nameFile + students[0].lastNameRu.toUpperCase() + ' ' + students[0].firstNameRu.toUpperCase()+'.docx'
             }
-            nameFile = nameFile.slice(0,-2) + '.docx'
+            else {
+                nameFile = nameFile + students[0].lastNameRu.toUpperCase() + ' ' + students[0].firstNameRu.toUpperCase()+' - ' 
+                + students[students.length-1].lastNameRu.toUpperCase() + ' ' + students[students.length-1].firstNameRu.toUpperCase()+'.docx'
+            }
+
+            
 
             // Output the document using Data-URI
             saveAs(out, nameFile);
+
+
+
         }
     );
 };
@@ -926,12 +1007,20 @@ window.generateInventory = function generate() {
 
 
             let nameFile = 'Опись - '
-            for (let i = 0; i<students.length; i++) {
-                nameFile = nameFile + students[i].lastNameRu.toUpperCase() + ' ' + students[i].firstNameRu.toUpperCase()+', '
+            // old
+            // for (let i = 0; i<students.length; i++) {
+            //     nameFile = nameFile + students[i].lastNameRu.toUpperCase() + ' ' + students[i].firstNameRu.toUpperCase()+', '
+            // }
+            // nameFile = nameFile.slice(0,-2) + '.docx'
+
+            // new
+            if (countTab()==1) {
+                nameFile = nameFile + students[0].lastNameRu.toUpperCase() + ' ' + students[0].firstNameRu.toUpperCase()+'.docx'
             }
-
-            nameFile = nameFile.slice(0,-2) + '.docx'
-
+            else {
+                nameFile = nameFile + students[0].lastNameRu.toUpperCase() + ' ' + students[0].firstNameRu.toUpperCase()+' - ' 
+                + students[students.length-1].lastNameRu.toUpperCase() + ' ' + students[students.length-1].firstNameRu.toUpperCase()+'.docx'
+            }
 
             // Output the document using Data-URI
             saveAs(out, nameFile);
@@ -1041,6 +1130,13 @@ function generateAll() {
                             grazdSklon = document.getElementById('otherGrazd').value
                             break
                     }
+
+                    //addressProj
+                    let addressProj = 'г. Москва, проспект Вернадского, 88.'
+                    if (document.getElementById('faculty'+indexTab).options[document.getElementById('faculty'+indexTab).selectedIndex].text == "Покровский филиал МПГУ"){
+                        addressProj = 'Владимирская область, Петушинский район, г. Покров, ул. Быкова, д. 24.'
+                    }
+
                     // regisration on
                     let registrSklon = ''
                     switch (document.getElementById('registrationOn').value) {
@@ -1065,6 +1161,7 @@ function generateAll() {
                         dateOfBirth: document.getElementById('dateOfBirth' + indexTab).value,
                         nStud: document.getElementById('nStud' + indexTab).value,
                         idPassport: document.getElementById('idPassport' + indexTab).value,
+                        addressProj: addressProj,
                         registrationOn: registrSklon
                     });
 
@@ -1251,6 +1348,9 @@ function generateAll() {
                             break
                         case "(ИРЦО) Институт развития цифрового образования":
                             facultySklon = 'Института развития цифрового образования'
+                            break
+                        case "Покровский филиал МПГУ":
+                            facultySklon = 'Покровского филиала МПГУ'
                             break
                     }
                     // course
@@ -1482,6 +1582,25 @@ function generateAll() {
                             break
                     }
 
+                    let addressProj = 'МОСКВА'
+                    let addressProjObl = ''
+                    let addressProjRa = ''
+                    let addressProjCity = 'Г. МОСКВА'
+                    let addressProjStr = 'ПРОСПЕКТ ВЕРНАДСКОГО'
+                    let addressProjD = '88'
+                    let addressProjK = '1'
+                    let addressProjTel = '+7 (965) 109-85-50'
+                    if (document.getElementById('faculty'+indexTab).options[document.getElementById('faculty'+indexTab).selectedIndex].text == "Покровский филиал МПГУ"){
+                        addressProj = 'МОСКВА, ПОКРОВ, ВЛАДИМИРСКАЯ ОБЛАСТЬ'
+                        addressProjObl = 'ВЛАДИМИРСКАЯ ОБЛАСТЬ'
+                        addressProjRa = 'ПЕТУШИНСКИЙ РАЙОН'
+                        addressProjCity = 'Г. ПОКРОВ'
+                        addressProjStr = 'БЫКОВА'
+                        addressProjD = '24'
+                        addressProjK = ''
+                        addressProjTel = '+7 (915) 779-56-73'
+                    }
+
                     // Render the document (Replace {first_name} by John, {last_name} by Doe, ...)
                     doc.setData({
 
@@ -1514,6 +1633,14 @@ function generateAll() {
                         dateOfIssue: document.getElementById('dateOfIssue' + indexTab).value.toUpperCase(),
                         validUntil: document.getElementById('validUntil' + indexTab).value.toUpperCase(),
                         registrationOn: registrSklon,
+                        addressProj: addressProj,
+                        addressProjObl: addressProjObl,
+                        addressProjRa: addressProjRa,
+                        addressProjCity: addressProjCity,
+                        addressProjStr: addressProjStr,
+                        addressProjD: addressProjD,
+                        addressProjK: addressProjK,
+                        addressProjTel: addressProjTel
                     });
 
                     try {
@@ -1617,8 +1744,20 @@ function generateAll() {
                 zap: ', '
             })
             // nStudent
-            nStudent.push({nSt: document.getElementById('nStud' + indexTab).value, zap: ', '})
-
+            //old
+            // nStudent.push({nSt: document.getElementById('nStud' + indexTab).value, zap: ', '})
+            // new
+            if (countTab()==1) {
+                nStudent.push({nSt: document.getElementById('nStud' + indexTab).value, zap: ''})
+            }
+            else {
+                if (i==0) {
+                    nStudent.push({nSt: document.getElementById('nStud' + indexTab).value, zap: ' - '})
+                }
+                if (i==countTab()-1) {
+                    nStudent.push({nSt: document.getElementById('nStud' + indexTab).value, zap: ''})
+                }
+            }
             // levelEducations
             switch (document.getElementById('levelEducation'+indexTab).options[document.getElementById('levelEducation'+indexTab).selectedIndex].text) {
                 default:
@@ -1723,6 +1862,10 @@ function generateAll() {
                     if (!facultys.some(el => el.nameText === '(ИРЦО) Институт развития цифрового образования')) {
                         facultys.push({nameText: '(ИРЦО) Институт развития цифрового образования', facultySklon: 'Института развития цифрового образования', zap: ', '})}
                     break
+                case "Покровский филиал МПГУ":
+                    if (!facultys.some(el => el.nameText === 'Покровский филиал МПГУ')) {
+                        facultys.push({nameText: 'Покровский филиал МПГУ', facultySklon: 'Покровского филиала МПГУ', zap: ', '})}
+                    break
             }
 
             // courses
@@ -1797,10 +1940,20 @@ function generateAll() {
 
 
                 let nameFile = 'Письмо-обоснование - '
-                for (let i = 0; i<students.length; i++) {
-                    nameFile = nameFile + students[i].lastNameRu.toUpperCase() + ' ' + students[i].firstNameRu.toUpperCase()+', '
+                // old
+                // for (let i = 0; i<students.length; i++) {
+                //     nameFile = nameFile + students[i].lastNameRu.toUpperCase() + ' ' + students[i].firstNameRu.toUpperCase()+', '
+                // }
+                // nameFile = nameFile.slice(0,-2) + '.docx'
+
+                // new
+                if (countTab()==1) {
+                    nameFile = nameFile + students[0].lastNameRu.toUpperCase() + ' ' + students[0].firstNameRu.toUpperCase()+'.docx'
                 }
-                nameFile = nameFile.slice(0,-2) + '.docx'
+                else {
+                    nameFile = nameFile + students[0].lastNameRu.toUpperCase() + ' ' + students[0].firstNameRu.toUpperCase()+' - ' 
+                    + students[students.length-1].lastNameRu.toUpperCase() + ' ' + students[students.length-1].firstNameRu.toUpperCase()+'.docx'
+                }
 
                 zipTotal.file(nameFile, out, {base64: true})
                 // Output the document using Data-URI
@@ -1882,11 +2035,21 @@ function generateAll() {
 
 
                 let nameFile = 'Опись - '
-                for (let i = 0; i<students.length; i++) {
-                    nameFile = nameFile + students[i].lastNameRu.toUpperCase() + ' ' + students[i].firstNameRu.toUpperCase()+', '
-                }
+                // old
+                // for (let i = 0; i<students.length; i++) {
+                //     nameFile = nameFile + students[i].lastNameRu.toUpperCase() + ' ' + students[i].firstNameRu.toUpperCase()+', '
+                // }
 
-                nameFile = nameFile.slice(0,-2) + '.docx'
+                // nameFile = nameFile.slice(0,-2) + '.docx'
+
+                // new
+                if (countTab()==1) {
+                    nameFile = nameFile + students[0].lastNameRu.toUpperCase() + ' ' + students[0].firstNameRu.toUpperCase()+'.docx'
+                }
+                else {
+                    nameFile = nameFile + students[0].lastNameRu.toUpperCase() + ' ' + students[0].firstNameRu.toUpperCase()+' - ' 
+                    + students[students.length-1].lastNameRu.toUpperCase() + ' ' + students[students.length-1].firstNameRu.toUpperCase()+'.docx'
+                }
 
                 zipTotal.file(nameFile, out, {base64: true})
 

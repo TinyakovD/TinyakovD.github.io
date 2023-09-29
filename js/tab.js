@@ -1,4 +1,4 @@
-<!-- DELETE TAB -->
+// <!-- DELETE TAB -->
 function removeDummy(el) {
     // index elem
     let elem = parseInt(el.parentNode.id.match(/\d+/));
@@ -29,7 +29,7 @@ function renameTab(ident) {
 
 }
 
-<!-- CREATE TAB -->
+// <!-- CREATE TAB -->
 function createTab() {
 
     let countTabs = countTab()
@@ -222,7 +222,8 @@ let selFaculty = [" ",
     "(ИМиИ) Институт математики и информатики",
     "(Дошфак) Факультет дошкольной педагогики и психологии",
     "(ИМО) Институт международного образования",
-    "(ИРЦО) Институт развития цифрового образования",]
+    "(ИРЦО) Институт развития цифрового образования",
+    "Покровский филиал МПГУ"]
 
 
 
@@ -429,7 +430,7 @@ function fillingFaculty(nameMassiveSelect, idSelect) {
         else {
             newOption.value = opt
             newOption.text = opt
-            console.log(newOption.value)
+            
         }
         chooseSelect.add(newOption)
     }
