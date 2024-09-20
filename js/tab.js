@@ -224,7 +224,8 @@ let selFaculty = [" ",
     "(Дошфак) Факультет дошкольной педагогики и психологии",
     "(ИМО) Институт международного образования",
     "(ИРЦО) Институт развития цифрового образования",
-    "Покровский филиал МПГУ"]
+    "Покровский филиал МПГУ",
+    "Дербентский филиал МПГУ"]
 
 
 
@@ -426,6 +427,10 @@ function fillingFaculty(nameMassiveSelect, idSelect) {
         }
         else if (opt == 'Покровский филиал МПГУ') {
             newOption.value = 'ПОКРОВСКИЙ ФИЛИАЛ МПГУ / POKHROVSKY BRANCH'
+            newOption.text = opt
+        }
+        else if (opt == 'Дербентский филиал МПГУ') {
+            newOption.value = 'ДЕРБЕНТСКИЙ ФИЛИАЛ МПГУ'
             newOption.text = opt
         }
         else if (opt==" ") {

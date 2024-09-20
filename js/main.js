@@ -100,6 +100,9 @@ window.generateGuarLetter = function generate() {
                     if (document.getElementById('faculty'+indexTab).options[document.getElementById('faculty'+indexTab).selectedIndex].text == "Покровский филиал МПГУ"){
                         addressProj = 'Владимирская область, Петушинский район, г. Покров, ул. Быкова, д. 24.'
                     }
+                    else if (document.getElementById('faculty'+indexTab).options[document.getElementById('faculty'+indexTab).selectedIndex].text == "Дербентский филиал МПГУ"){
+                        addressProj = 'Респ. Дагестан, г. Дербент, ул. Буйнакского, д. 18'
+                    }
 
                     // regisration on
                     let registrSklon = ''
@@ -319,6 +322,9 @@ window.generateSupportLetter = function generate() {
                             break
                         case "Покровский филиал МПГУ":
                             facultySklon = 'Покровского филиала МПГУ'
+                            break
+                        case "Покровский филиал МПГУ":
+                            facultySklon = 'Дербентского филиала МПГУ'
                             break
                     }
                     // course
@@ -565,6 +571,16 @@ window.generateSolicitation = function generate() {
                         addressProjD = '24'
                         addressProjK = ''
                         addressProjTel = '+7 (915) 779-56-73'
+                    }
+                    else if (document.getElementById('faculty'+indexTab).options[document.getElementById('faculty'+indexTab).selectedIndex].text == "Дербентский филиал МПГУ"){
+                        addressProj = 'РЕСПУБЛИКА ДАГЕСТАН'
+                        addressProjObl = ''
+                        addressProjRa = 'ПЕТУШИНСКИЙ РАЙОН'
+                        addressProjCity = 'Г. ДЕРБЕНТ'
+                        addressProjStr = 'БУЙНАКСКОГО'
+                        addressProjD = '18'
+                        addressProjK = ''
+                        addressProjTel = '+7 (87240) 4-08-94'
                     }
 
 
@@ -831,6 +847,10 @@ window.generateJustification = function generate() {
             case "Покровский филиал МПГУ":
                 if (!facultys.some(el => el.nameText === 'Покровский филиал МПГУ')) {
                 facultys.push({nameText: 'Покровский филиал МПГУ', facultySklon: 'Покровского филиала МПГУ', zap: ', '})}
+                break
+            case "Дербентский филиал МПГУ":
+                if (!facultys.some(el => el.nameText === 'Дербентский филиал МПГУ')) {
+                facultys.push({nameText: 'Дербентский филиал МПГУ', facultySklon: 'Дербентского филиала МПГУ', zap: ', '})}
                 break
         }
 
@@ -1144,6 +1164,9 @@ function generateAll() {
                     if (document.getElementById('faculty'+indexTab).options[document.getElementById('faculty'+indexTab).selectedIndex].text == "Покровский филиал МПГУ"){
                         addressProj = 'Владимирская область, Петушинский район, г. Покров, ул. Быкова, д. 24.'
                     }
+                    else if (document.getElementById('faculty'+indexTab).options[document.getElementById('faculty'+indexTab).selectedIndex].text == "Дербентский филиал МПГУ"){
+                        addressProj = 'Респ. Дагестан, г. Дербент, ул. Буйнакского, д. 18'
+                    }
 
                     // regisration on
                     let registrSklon = ''
@@ -1359,6 +1382,9 @@ function generateAll() {
                             break
                         case "Покровский филиал МПГУ":
                             facultySklon = 'Покровского филиала МПГУ'
+                            break
+                        case "Покровский филиал МПГУ":
+                            facultySklon = 'Дербентского филиала МПГУ'
                             break
                     }
                     // course
@@ -1607,6 +1633,16 @@ function generateAll() {
                         addressProjD = '24'
                         addressProjK = ''
                         addressProjTel = '+7 (915) 779-56-73'
+                    }
+                    else if (document.getElementById('faculty'+indexTab).options[document.getElementById('faculty'+indexTab).selectedIndex].text == "Дербентский филиал МПГУ"){
+                        addressProj = 'РЕСПУБЛИКА ДАГЕСТАН'
+                        addressProjObl = ''
+                        addressProjRa = 'ПЕТУШИНСКИЙ РАЙОН'
+                        addressProjCity = 'Г. ДЕРБЕНТ'
+                        addressProjStr = 'БУЙНАКСКОГО'
+                        addressProjD = '18'
+                        addressProjK = ''
+                        addressProjTel = '+7 (87240) 4-08-94'
                     }
 
                     // Render the document (Replace {first_name} by John, {last_name} by Doe, ...)
@@ -1874,6 +1910,11 @@ function generateAll() {
                     if (!facultys.some(el => el.nameText === 'Покровский филиал МПГУ')) {
                         facultys.push({nameText: 'Покровский филиал МПГУ', facultySklon: 'Покровского филиала МПГУ', zap: ', '})}
                     break
+                case "Дербентский филиал МПГУ":
+                    if (!facultys.some(el => el.nameText === 'Дербентский филиал МПГУ')) {
+                        facultys.push({nameText: 'Дербентский филиал МПГУ', facultySklon: 'Дербентского филиала МПГУ', zap: ', '})}
+                    break
+                
             }
 
             // courses
