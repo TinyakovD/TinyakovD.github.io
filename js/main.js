@@ -584,8 +584,6 @@ window.generateSolicitation = function generate() {
                     }
 
 
-
-
                     // Render the document (Replace {first_name} by John, {last_name} by Doe, ...)
                     doc.setData({
 
@@ -625,7 +623,9 @@ window.generateSolicitation = function generate() {
                         addressProjStr: addressProjStr,
                         addressProjD: addressProjD,
                         addressProjK: addressProjK,
-                        addressProjTel: addressProjTel
+                        addressProjTel: addressProjTel,
+
+                        workAddress: document.getElementById('workAddress' + indexTab).value.toUpperCase()
                     });
 
                     try {

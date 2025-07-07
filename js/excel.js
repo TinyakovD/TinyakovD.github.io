@@ -42,6 +42,8 @@ function findInfo(id) {
     let course = document.querySelector("#course"+id)
     let deleteButton = document.querySelector("#deleteButton"+id)
 
+    let workAddress = document.querySelector('#workAddress'+id)
+
 
     // document.getElementById('find1').addEventListener('click',()=> {
         if (selectedFile && nStud.value!=0){
@@ -150,7 +152,11 @@ function findInfo(id) {
                                 homeAddress.value = homeAddress.value + ', кв.' + totalInfo[i]['КВАРТИРА / APT №']
                             }
 
-
+                        workAddress.value = totalInfo[i]['АДРЕС МЕСТА РАБОТЫ ИЛИ УЧЕБЫ / STUDY OR WORK PLACE (ADDRESS)'] ? totalInfo[i]['АДРЕС МЕСТА РАБОТЫ ИЛИ УЧЕБЫ / STUDY OR WORK PLACE (ADDRESS)'] : ''
+                        if (workAddress.value == undefined || workAddress.value == ' ' || workAddress.value == '') {
+                            workAddress.text = ''
+                            workAddress.value = ' '
+                        }
 
 
 

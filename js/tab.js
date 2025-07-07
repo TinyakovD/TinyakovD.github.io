@@ -114,6 +114,8 @@ function createTab() {
     let deleteButton = newTabDiv.querySelector("#deleteButton1")
     deleteButton.id = 'deleteButton' + indexNewTab
 
+    let workAddress = newTabDiv.querySelector("#workAddress1")
+    workAddress.id = 'workAddress' + indexNewTab
 
     let aInput = [nStud	,
         // purpose,
@@ -141,7 +143,8 @@ function createTab() {
         // levelEducation,
         // faculty,
         // course,
-        // deleteButton
+        // deleteButton,
+        workAddress,
     ]
 
     for (let i of aInput) {
