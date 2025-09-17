@@ -323,7 +323,7 @@ window.generateSupportLetter = function generate() {
                         case "Покровский филиал МПГУ":
                             facultySklon = 'Покровского филиала МПГУ'
                             break
-                        case "Покровский филиал МПГУ":
+                        case "Дербентский филиал МПГУ":
                             facultySklon = 'Дербентского филиала МПГУ'
                             break
                     }
@@ -1383,7 +1383,7 @@ function generateAll() {
                         case "Покровский филиал МПГУ":
                             facultySklon = 'Покровского филиала МПГУ'
                             break
-                        case "Покровский филиал МПГУ":
+                        case "Дербентский филиал МПГУ":
                             facultySklon = 'Дербентского филиала МПГУ'
                             break
                     }
@@ -2226,4 +2226,5 @@ function generateAll() {
 //         // see FileSaver.js
 //         saveAs(content, "example.zip");
 //     })
+
 // }
