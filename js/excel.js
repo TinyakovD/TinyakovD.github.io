@@ -53,7 +53,7 @@ function findInfo(id) {
                 let data = event.target.result;
                 let workbook = XLSX.read(data,{type:"binary"});
 
-                let indSheet = Object.keys(workbook.Sheets).indexOf('ПРИГЛАШЕНИЯ 2021-2022-2023-2024') 
+                let indSheet = Object.keys(workbook.Sheets).indexOf('ПРИГЛАШЕНИЯ 25.09.2025 - 2026') 
 
                 let sheet = Object.keys(workbook.Sheets)[indSheet]
                 let rowObject = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheet]);
@@ -251,6 +251,7 @@ function updateNameDisplay() {
     }
 
 }
+
 
 
 
