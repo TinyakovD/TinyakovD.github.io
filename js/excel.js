@@ -161,7 +161,7 @@ function findInfo(id) {
 
 
                         levelEducation.value = totalInfo[i]['УРОВЕНЬ ОБРАЗОВАНИЯ/ LEVEL OF EDUCATION']
-                        faculty.value = totalInfo[i]['ИНСТИТУТ & ФАКУЛЬТЕТ (не заполняется, если цель поездки: ТРУДОВАЯ ДЕЯТЕЛЬНОСТЬ) / INSTITUTE & FACULTY (Do not fill in if the purpose of visit is "WORK")']
+                        faculty.value = totalInfo[i]['ИНСТИТУТ & ФАКУЛЬТЕТ  / INSTITUTE & DEPARTMENT']
                         course.value = totalInfo[i]['КУРС ОБУЧЕНИЯ/YEAR OF STUDYING']
 
 
@@ -251,6 +251,7 @@ function updateNameDisplay() {
     }
 
 }
+
 
 
 
