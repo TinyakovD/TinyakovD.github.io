@@ -583,6 +583,11 @@ window.generateSolicitation = function generate() {
                         addressProjTel = '+7 (87240) 4-08-94'
                     }
 
+                    let workAddressNew = document.getElementById('workAddress' + indexTab).value
+                    if (workAddressNew == undefined || workAddressNew == ' ' || workAddressNew == '' || workAddressNew == 'undefined') {
+                            workAddressNew = ''
+                    }
+
 
                     // Render the document (Replace {first_name} by John, {last_name} by Doe, ...)
                     doc.setData({
@@ -625,7 +630,7 @@ window.generateSolicitation = function generate() {
                         addressProjK: addressProjK,
                         addressProjTel: addressProjTel,
 
-                        workAddress: document.getElementById('workAddress' + indexTab).value.toUpperCase()
+                        workAddress: workAddressNew.toUpperCase()
                     });
 
                     try {
@@ -2228,3 +2233,4 @@ function generateAll() {
 //     })
 
 // }
+
