@@ -337,6 +337,10 @@ function fillingLevelEducation(nameMassiveSelect, idSelect) {
             newOption.value = 'Стажировка(межвуз)'
             newOption.text = opt
         }
+        else if (opt == "Дополнительная общеразвивающая программа") {
+            newOption.value = 'Дополнительная общеразвивающая программа'
+            newOption.text = opt
+        }
 
         else if (opt=="") {
             newOption.selected = true
