@@ -373,6 +373,9 @@ window.generateSupportLetter = function generate() {
                         case "Стажировка(межвуз)":
                             levelEducSklon = 'в число стажирующихся студентов университета'
                             break
+                        case "Дополнительная общеразвивающая программа":
+                            levelEducSklon = 'в число студентов дополнительной общеразвивающей программы'
+                            break
                     }
 
                     // Render the document (Replace {first_name} by John, {last_name} by Doe, ...)
@@ -770,6 +773,10 @@ window.generateJustification = function generate() {
             case "Стажировка(межвуз)":
                 if (!levelEducations.some(el => el.nameText === 'Стажировка(межвуз)')) {
                     levelEducations.push({nameText: 'Стажировка(межвуз)', levelEducSklon: 'в число стажирующихся студентов университета', zap: ', '})}
+                break
+            case "Дополнительная общеразвивающая программа":
+                if (!levelEducations.some(el => el.nameText === 'Дополнительная общеразвивающая программа')) {
+                    levelEducations.push({nameText: 'Дополнительная общеразвивающая программа', levelEducSklon: 'в число студентов дополнительной общеразвивающей программы', zap: ', '})}
                 break
         }
 
@@ -1435,6 +1442,9 @@ function generateAll() {
                         case "Стажировка(межвуз)":
                             levelEducSklon = 'в число стажирующихся студентов университета'
                             break
+                        case "Дополнительная общеразвивающая программа":
+                            levelEducSklon = 'в число студентов дополнительной общеразвивающей программы'
+                            break
                     }
 
                     // Render the document (Replace {first_name} by John, {last_name} by Doe, ...)
@@ -1834,6 +1844,10 @@ function generateAll() {
                 case "Стажировка(межвуз)":
                     if (!levelEducations.some(el => el.nameText === 'Стажировка(межвуз)')) {
                         levelEducations.push({nameText: 'Стажировка(межвуз)', levelEducSklon: 'в число стажирующихся студентов университета', zap: ', '})}
+                    break
+                case "Дополнительная общеразвивающая программа":
+                    if (!levelEducations.some(el => el.nameText === 'Дополнительная общеразвивающая программа')) {
+                        levelEducations.push({nameText: 'Дополнительная общеразвивающая программа', levelEducSklon: 'в число студентов дополнительной общеразвивающей программы', zap: ', '})}
                     break
             }
 
