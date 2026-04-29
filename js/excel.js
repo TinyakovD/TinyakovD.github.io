@@ -109,11 +109,11 @@ function findInfo(id) {
 
 
 
-                        placeStateGetVisa.value = totalInfo[i]['ГОСУДАРСТВО  ПОСТОЯННОГО ПРОЖИВАНИЯ / PERMANENT RESIDENCE']
+                        placeStateGetVisa.value = totalInfo[i]['ГОСУДАРСТВО ПОСТОЯННОГО ПРОЖИВАНИЯ / PERMANENT RESIDENCE']
                         if (placeStateGetVisa.value == '' || placeStateGetVisa.value == undefined || placeStateGetVisa.value == " ") {
                             placeStateGetVisa.value = 'Другое'
                             chPlaceStateGetVisa(placeStateGetVisa)
-                            otherStateGetVisa.value = totalInfo[i]['ГОСУДАРСТВО  ПОСТОЯННОГО ПРОЖИВАНИЯ / PERMANENT RESIDENCE']
+                            otherStateGetVisa.value = totalInfo[i]['ГОСУДАРСТВО ПОСТОЯННОГО ПРОЖИВАНИЯ / PERMANENT RESIDENCE']
                         }
                         else {
                             otherStateGetVisa.value = ""
