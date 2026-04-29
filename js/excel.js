@@ -135,7 +135,7 @@ function findInfo(id) {
                         
 
                         
-                        homeAddress.value = totalInfo[i]['CТРАНА / COUNTRY']
+                        homeAddress.value = totalInfo[i]["Домашний адрес на родине/ Permanent home address  \n\nCТРАНА / COUNTRY"]
                             if (totalInfo[i]['ПРОВИНЦИЯ ИЛИ ОБЛАСТЬ / PROVINCE OR REGION'] != undefined) {
                                 homeAddress.value = homeAddress.value + ', пров.' + totalInfo[i]['ПРОВИНЦИЯ ИЛИ ОБЛАСТЬ / PROVINCE OR REGION']
                             }
