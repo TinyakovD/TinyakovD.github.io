@@ -81,31 +81,31 @@ function findInfo(id) {
 
                         gender.value = totalInfo[i]['ПОЛ / SEX']
 
-                        dateEnd.setDate(dateStart.getDate()+totalInfo[i]['ГОД РОЖДЕНИЯ / DATE OF BIRTH'])
+                        dateEnd.setDate(dateStart.getDate()+totalInfo[i]['Год рождения / Date of birth '])
                         dateOfBirth.value = dateEnd.toLocaleDateString()
                         dateEnd = new Date(dateStart)
 
                         //series.value = totalInfo[i]['']
-                        idPassport.value = totalInfo[i]['№ ПАСПОРТА / PASSPORT №']
+                        idPassport.value = totalInfo[i]['№ паспорта / Passport №']
 
-                        dateEnd.setDate(dateStart.getDate()+totalInfo[i]['ДАТА ВЫДАЧИ / DATE OF ISSUE'])
+                        dateEnd.setDate(dateStart.getDate()+totalInfo[i]['Дата выдачи / Date of issue'])
                         dateOfIssue.value = dateEnd.toLocaleDateString()
                         dateEnd = new Date(dateStart)
 
-                        dateEnd.setDate(dateStart.getDate()+totalInfo[i]['СРОК ДЕЙСТВИЯ ПАСПОРТА / DATE OF EXPIRY'])
+                        dateEnd.setDate(dateStart.getDate()+totalInfo[i]['Срок действия паспорта / Date of expiry'])
                         validUntil.value = dateEnd.toLocaleDateString()
                         dateEnd = new Date(dateStart)
 
 
-                        issuedBy.value = totalInfo[i]['КЕМ ВЫДАН ДОКУМЕНТ/ AUTHORITY']
+                        issuedBy.value = totalInfo[i]['Кем выдан документ/ Authority']
 
-                        stateBirth.value = totalInfo[i]['ГОСУДАРСТВО РОЖДЕНИЯ / COUNTRY OF BIRTH']
+                        stateBirth.value = totalInfo[i]['Государство рождения / Country of birth']
                         if (stateBirth.value == '' || stateBirth.value == undefined || stateBirth.value == " ") {
                             stateBirth.value = 'Другое'
-                            otherStateBirth.value = totalInfo[i]['ГОСУДАРСТВО РОЖДЕНИЯ / COUNTRY OF BIRTH']
+                            otherStateBirth.value = totalInfo[i]['Государство рождения / Country of birth']
                         }
                         else {otherStateBirth.value = ""}
-                        placeStateBirth.value = totalInfo[i]['МЕСТО РОЖДЕНИЯ (ИЗ ПАСПОРТА) / PLACE OF BIRTH']
+                        placeStateBirth.value = totalInfo[i]['Место рождения (из паспорта) / Place of birth']
 
 
 
@@ -122,19 +122,19 @@ function findInfo(id) {
 
 
 
-                        placeCityGetVisa.value = totalInfo[i]['МЕСТО ПОЛУЧЕНИЯ ВИЗЫ / VISA APPLICATION CENTER']
+                        placeCityGetVisa.value = totalInfo[i]['Место получения визы / Visa Application Center']
                         if (placeCityGetVisa.value == '' || placeCityGetVisa.value == undefined || placeCityGetVisa.value == " ") {
                             placeCityGetVisa.value = 'Другое'
-                            otherCityGetVisa.value = totalInfo[i]['МЕСТО ПОЛУЧЕНИЯ ВИЗЫ / VISA APPLICATION CENTER']
+                            otherCityGetVisa.value = totalInfo[i]['Место получения визы / Visa Application Center']
                         }
                         else {otherCityGetVisa.value = ""}
 
 
 
+                        console.log(totalInfo[i]);
+                        
 
-
-
-
+                        
                         homeAddress.value = totalInfo[i]['CТРАНА / COUNTRY']
                             if (totalInfo[i]['ПРОВИНЦИЯ ИЛИ ОБЛАСТЬ / PROVINCE OR REGION'] != undefined) {
                                 homeAddress.value = homeAddress.value + ', пров.' + totalInfo[i]['ПРОВИНЦИЯ ИЛИ ОБЛАСТЬ / PROVINCE OR REGION']
@@ -152,7 +152,7 @@ function findInfo(id) {
                                 homeAddress.value = homeAddress.value + ', кв.' + totalInfo[i]['КВАРТИРА / APT №']
                             }
 
-                        workAddress.value = totalInfo[i]['АДРЕС МЕСТА РАБОТЫ ИЛИ УЧЕБЫ / STUDY OR WORK PLACE (ADDRESS)'] ? totalInfo[i]['АДРЕС МЕСТА РАБОТЫ ИЛИ УЧЕБЫ / STUDY OR WORK PLACE (ADDRESS)'] : ''
+                        workAddress.value = totalInfo[i]['Адрес места работы или учебы / Study or Work place (address)'] ? totalInfo[i]['Адрес места работы или учебы / Study or Work place (address)'] : ''
                         if (workAddress.value == undefined || workAddress.value == ' ' || workAddress.value == '') {
                             workAddress.text = ''
                             workAddress.value = ' '
@@ -161,7 +161,7 @@ function findInfo(id) {
 
 
                         levelEducation.value = totalInfo[i]['УРОВЕНЬ ОБРАЗОВАНИЯ/ LEVEL OF EDUCATION']
-                        faculty.value = totalInfo[i]['ИНСТИТУТ & ФАКУЛЬТЕТ  / INSTITUTE & DEPARTMENT']
+                        faculty.value = totalInfo[i]['Институт & Факультет (не заполняется, если цель поездки: ТРУДОВАЯ ДЕЯТЕЛЬНОСТЬ) / Institute & Faculty (Do not fill in if the purpose of visit is "WORK")']
                         course.value = totalInfo[i]['КУРС ОБУЧЕНИЯ/YEAR OF STUDYING']
 
 
